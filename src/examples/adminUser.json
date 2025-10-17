@@ -1,0 +1,102 @@
+{
+  "adminUser": {
+    "profile": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "username": "admin@matrixtrading.com",
+      "email": "admin@matrixtrading.com",
+      "password": "123456", 
+      "name": "System Administrator",
+      "role": "admin",
+      "emailVerified": true,
+      "createdAt": "2024-01-16T12:00:00Z",
+      "lastLogin": "2024-01-16T14:30:00Z",
+      "status": "ACTIVE",
+      "metadata": {
+        "twoFactorEnabled": true,
+        "lastPasswordChange": "2024-01-16T12:00:00Z",
+        "loginAttempts": 0,
+        "forcePasswordChange": false
+      }
+    },
+    "permissions": {
+      "dashboard": ["view", "manage"],
+      "users": ["view", "create", "update", "delete"],
+      "portfolios": ["view", "create", "update", "delete"],
+      "trading": ["view", "execute", "manage"],
+      "settings": ["view", "update"],
+      "analytics": ["view", "export"],
+      "affiliate": ["view", "manage", "approve"]
+    },
+    "affiliateProgram": {
+      "settings": {
+        "commissionTiers": [
+          {
+            "name": "Bronze",
+            "minReferrals": 0,
+            "maxReferrals": 4,
+            "commissionRate": 5.0,
+            "payoutThreshold": 50.0
+          },
+          {
+            "name": "Silver",
+            "minReferrals": 5,
+            "maxReferrals": 9,
+            "commissionRate": 7.5,
+            "payoutThreshold": 100.0
+          },
+          {
+            "name": "Gold",
+            "minReferrals": 10,
+            "maxReferrals": 24,
+            "commissionRate": 10.0,
+            "payoutThreshold": 200.0
+          },
+          {
+            "name": "Platinum",
+            "minReferrals": 25,
+            "maxReferrals": null,
+            "commissionRate": 12.5,
+            "payoutThreshold": 500.0
+          }
+        ],
+        "payoutSchedule": "MONTHLY",
+        "minimumPayout": 50.0,
+        "paymentMethods": ["BANK_TRANSFER", "PAYPAL", "CRYPTO"],
+        "cookieLifetime": 30,
+        "programRules": {
+          "selfReferralAllowed": false,
+          "multipleAccountsAllowed": false,
+          "requireEmailVerification": true,
+          "requireKYC": false
+        }
+      },
+      "metrics": {
+        "totalReferrals": 150,
+        "activeReferrals": 120,
+        "conversionRate": 80.0,
+        "totalCommissions": 15000.0,
+        "pendingCommissions": 2500.0,
+        "paidCommissions": 12500.0,
+        "averageCommissionPerReferral": 100.0
+      },
+      "tracking": {
+        "referralCode": "ADMIN123",
+        "trackingMethods": ["URL_PARAMETER", "COOKIE", "REFERRAL_CODE"],
+        "conversionPoints": ["SIGNUP", "SUBSCRIPTION", "FIRST_TRADE"],
+        "attributionWindow": 30, 
+        "analyticsIntegration": {
+          "googleAnalytics": true,
+          "facebookPixel": true,
+          "customEvents": true
+        }
+      },
+      "reporting": {
+        "metrics": ["REFERRALS", "CONVERSIONS", "REVENUE", "COMMISSIONS"],
+        "dimensions": ["DATE", "REFERRAL_SOURCE", "LOCATION", "DEVICE"],
+        "frequency": "DAILY",
+        "automatedReports": true,
+        "exportFormats": ["CSV", "PDF", "JSON"]
+      }
+    }
+  }
+}

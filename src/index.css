@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base font size adjustments for mobile */
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Animation fallbacks for older browsers */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  -webkit-animation: fadeIn 0.2s ease-out forwards;
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Touch-specific optimizations */
+@media (hover: none) {
+  .hover\:scale-\[1\.02\] {
+    transform: none !important;
+  }
+  
+  .hover\:shadow-lg {
+    box-shadow: none !important;
+  }
+}
+
+/* Safe area insets for modern iOS devices */
+.safe-padding {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Improved tap targets for touch devices */
+@media (pointer: coarse) {
+  button, 
+  [role="button"],
+  select,
+  input {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling with fallback */
+@supports (scroll-behavior: smooth) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Fix for Safari flexbox gap */
+@supports not (gap: 1rem) {
+  .gap-3 > * + * {
+    margin-left: 0.75rem;
+  }
+  
+  .gap-4 > * + * {
+    margin-left: 1rem;
+  }
+  
+  .gap-6 > * + * {
+    margin-left: 1.5rem;
+  }
+}
