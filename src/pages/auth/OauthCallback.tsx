@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '@/store/hooks';
-import { googleLogin } from '@/store/authThunks';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2 } from 'lucide-react';
 
@@ -20,7 +19,7 @@ export function GoogleCallbackPage() {
     const code = searchParams.get('code');
     const state = searchParams.get('state');
     const error = searchParams.get('error');
-    const referralCode = searchParams.get('ref') ?? undefined;
+    // const referralCode = searchParams.get('ref') ?? undefined;
 
     if (status !== 'idle') return; 
     if (processedRef.current) return;
@@ -52,7 +51,6 @@ export function GoogleCallbackPage() {
       try {
         setStatus('processing');
 
-        const data = await dispatch(googleLogin({ code, state, referralCode })).unwrap();
 
         const preAuthPath = localStorage.getItem('preAuthPath');
         localStorage.removeItem('preAuthPath');

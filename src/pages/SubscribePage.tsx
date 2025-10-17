@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// import axios from '@/utils/axios'; // your API wrapper
+import { useEffect, useState } from 'react';
 import { api } from '@/services/api';
 import { useNavigate } from 'react-router-dom';
 

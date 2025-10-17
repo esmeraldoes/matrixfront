@@ -24,7 +24,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { useTradingStore } from "@/store/tradingStore";
-import { usePositions, useAssets, useAccount, usePortfolioHistory } from "@/hooks/useTrading";
+import { usePositions, useAssets, useAccount } from "@/hooks/useTrading";
 
 export const TradingDashboard: React.FC = () => {
   const { accountId } = useParams<{ accountId: string }>();
@@ -60,9 +60,7 @@ export const TradingDashboard: React.FC = () => {
   } = useAssets(accountId!, {});
 
   const { data: accountData, refetch: refetchAccount } = useAccount(accountId!);
-  const { data: portfolioHistory } = usePortfolioHistory(accountId!);
 
-  console.log("ACTIVE SYMBOL: ", activeSymbol)
 
   // Handle refresh
   const handleRefresh = async () => {

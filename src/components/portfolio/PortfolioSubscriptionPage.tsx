@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Bookmark, Play, TrendingUp, Search, Filter } from 'lucide-react';
+import { ArrowLeft, Bookmark, Play, TrendingUp } from 'lucide-react';
 import { PortfolioCard } from '@/components/portfolio/PortfolioCard';
 import { PortfolioDetails } from '@/components/portfolio/PortfolioDetails';
 import { ConfirmationModal } from '@/components/ui/ConfirmationModal';
@@ -20,9 +20,9 @@ export const PortfolioSubscriptionPage: React.FC = () => {
   const [showPortfolioDetails, setShowPortfolioDetails] = useState(false);
   const [detailedPortfolio, setDetailedPortfolio] = useState<Portfolio | null>(null);
   
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState<'all' | 'active' | 'paused' | 'cancelled'>('all');
-  const [typeFilter, setTypeFilter] = useState<'all' | 'live' | 'paper'>('all');
+  const [searchTerm] = useState('');
+  const [statusFilter] = useState<'all' | 'active' | 'paused' | 'cancelled'>('all');
+  const [typeFilter] = useState<'all' | 'live' | 'paper'>('all');
   
   const [showPauseModal, setShowPauseModal] = useState(false);
   const [subscriptionToPause, setSubscriptionToPause] = useState<number | null>(null);
@@ -246,7 +246,7 @@ export const PortfolioSubscriptionPage: React.FC = () => {
     setDetailedPortfolio(null);
   };
 
-  const handleCopyPortfolio = (portfolio: Portfolio) => {
+  const handleCopyPortfolio = () => {
     navigate('/portfolio');
     toast({
       title: "Browse Portfolios",

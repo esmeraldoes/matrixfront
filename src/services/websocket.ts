@@ -54,7 +54,7 @@ export class MarketDataWebSocketService {
           }
         };
 
-        this.ws.onclose = (event) => {
+        this.ws.onclose = () => {
           this.isConnected = false;
           this.onStatusChange?.('disconnected');
           this.handleReconnection();
@@ -271,7 +271,7 @@ export class TradingWebSocketService {
           }
         };
 
-        this.ws.onclose = (event) => {
+        this.ws.onclose = () => {
           this.isConnected = false;
           this.onStatusChange?.('disconnected');
           this.stopHeartbeat();

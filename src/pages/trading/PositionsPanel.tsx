@@ -77,7 +77,6 @@ export const PositionsPanel: React.FC<PositionsPanelProps> = ({
             const pnl = parseFloat(position.unrealized_pl);
             const pnlPercent = parseFloat(position.unrealized_plpc);
             const isPositive = pnl >= 0;
-            const marketValue = parseFloat(position.market_value);
 
             return (
               <div

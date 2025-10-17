@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import {
   UserCircle,
   LogOut,
-  LogIn,
   Mail,
   CreditCard,
   Cpu,

@@ -22,7 +22,7 @@ export class CalculationService {
   private static instance: CalculationService;
   private priceCache: Map<string, number> = new Map();
   private lastCalculationTime: number = 0;
-  private calculationInterval: number = 1000; // 1 second
+  private calculationInterval: number = 1000;
 
   public static getInstance(): CalculationService {
     if (!CalculationService.instance) {
@@ -44,7 +44,6 @@ export class CalculationService {
     const quantity = parseFloat(position.qty || position.quantity);
     const avgEntryPrice = parseFloat(position.avg_entry_price);
     
-    // Use provided price or cached price
     const price = currentPrice || this.priceCache.get(symbol) || parseFloat(position.current_price);
     
     const marketValue = quantity * price;
@@ -109,45 +108,43 @@ export class CalculationService {
     };
   }
 
-  private performCalculations(): void {
-    const now = Date.now();
-    if (now - this.lastCalculationTime < this.calculationInterval) {
-      return;
-    }
 
-    this.lastCalculationTime = now;
-    
-    const store = useTradingStore.getState();
-    const { positions, account } = store;
-
-    if (positions.length > 0 && account) {
-      // Calculate updated positions with current prices
-      const updatedPositions = positions.map(position => {
-        const calculation = this.calculatePositionValues(position);
-        return {
-          ...position,
-          market_value: calculation.marketValue.toString(),
-          unrealized_pl: calculation.unrealizedPL.toString(),
-          unrealized_plpc: calculation.unrealizedPLPercent.toString(),
-          current_price: calculation.currentValue.toString()
-        };
-      });
-
-      // Calculate portfolio summary
-      const portfolioCalculation = this.calculatePortfolioValues(positions, account);
-      
-      // Update store with calculated values
-      store.updatePositions(updatedPositions);
-      store.updateAccount({
-        ...account,
-        equity: portfolioCalculation.totalEquity,
-        portfolio_value: portfolioCalculation.totalMarketValue,
-        cash: portfolioCalculation.cashBalance,
-        day_profit_loss: portfolioCalculation.dailyPL,
-        day_profit_loss_pct: portfolioCalculation.dailyPLPercent
-      });
-    }
+private performCalculations(): void {
+  const now = Date.now();
+  if (now - this.lastCalculationTime < this.calculationInterval) {
+    return;
   }
+
+  this.lastCalculationTime = now;
+  
+  const store = useTradingStore.getState();
+  const { positions, account } = store;
+
+  if (positions.length > 0 && account) {
+    const updatedPositions = positions.map(position => {
+      const calculation = this.calculatePositionValues(position);
+      return {
+        ...position,
+        market_value: calculation.marketValue.toString(),
+        unrealized_pl: calculation.unrealizedPL.toString(),
+        unrealized_plpc: calculation.unrealizedPLPercent.toString(),
+        current_price: calculation.currentValue.toString()
+      };
+    });
+
+    const portfolioCalculation = this.calculatePortfolioValues(positions, account);
+    
+    store.updatePositions(updatedPositions);
+    store.updateAccount({
+      ...account,
+      equity: portfolioCalculation.totalEquity.toString(), 
+      portfolio_value: portfolioCalculation.totalMarketValue.toString(), 
+      cash: portfolioCalculation.cashBalance.toString(),
+      day_profit_loss: portfolioCalculation.dailyPL,
+      day_profit_loss_pct: portfolioCalculation.dailyPLPercent.toString() 
+    });
+  }
+}
 }
 
 export const calculationService = CalculationService.getInstance();

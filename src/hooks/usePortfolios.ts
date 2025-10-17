@@ -356,7 +356,7 @@ export const useRebalancePortfolio = () => {
       const response = await api.post(`/realtrade/portfolio-subscriptions/${subscriptionId}/rebalance/`);
       return response.data;
     },
-    onSuccess: (data, subscriptionId) => {
+    onSuccess: (_data, subscriptionId) => {
       queryClient.invalidateQueries({ queryKey: portfolioQueryKeys.subscription(subscriptionId) });
       queryClient.invalidateQueries({ queryKey: portfolioQueryKeys.subscriptions() });
       queryClient.invalidateQueries({ queryKey: portfolioQueryKeys.subscriptionPerformance(subscriptionId) });
@@ -405,7 +405,7 @@ export const useManagePortfolioSubscription = () => {
       const response = await api.post(`/realtrade/portfolio-subscriptions/${subscriptionId}/${action}/`);
       return response.data;
     },
-    onSuccess: (data, variables) => {
+    onSuccess: (_data, variables) => {
       const { subscriptionId, action } = variables;
       
       queryClient.invalidateQueries({ queryKey: portfolioQueryKeys.subscription(subscriptionId) });

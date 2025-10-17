@@ -95,13 +95,12 @@ class ApiClient {
         return;
       }
 
-      // Add buffer (e.g., 1 minute before actual expiry)
       if (this.isAccessTokenExpired(60)) {
-        this.refreshToken().catch(error => {
+        this.refreshToken().catch(_error => {
           this.handleAuthFailure();
         });
       }
-    }, 30000); // Check every 30 seconds
+    }, 30000); 
   }
 
   private isAccessTokenExpired(bufferSeconds = 0): boolean {

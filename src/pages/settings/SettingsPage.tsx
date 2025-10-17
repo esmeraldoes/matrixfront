@@ -16,13 +16,6 @@ import { useToast } from '@/hooks/use-toast';
 import { ConfirmationModal } from '@/components/ui/ConfirmationModal';
 import type { BrokerConnection } from '@/store/types/broker';
 
-interface BrokerAccount {
-  id: string;
-  name: string;
-  type: string;
-  status: 'CONNECTED' | 'DISCONNECTED' | 'ERROR';
-  paperTradingBalance?: number;
-}
 
 const BROKER_TYPES = [
   { value: 'alpaca', label: 'Alpaca' },
@@ -53,7 +46,6 @@ type TestStatus = {
 } | null;
 
 const Settings: React.FC = () => {
-  const [brokerAccounts, setBrokerAccounts] = useState<BrokerAccount[]>([]);
   const [showBrokerModal, setShowBrokerModal] = useState(false);
   const [editingConnection, setEditingConnection] = useState<BrokerConnection | null>(null);
   const [formData, setFormData] = useState<Partial<BrokerConnection>>({

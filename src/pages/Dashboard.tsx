@@ -5,7 +5,6 @@ import {
   TrendingDown, 
   DollarSign, 
   Percent, 
-  RefreshCw, 
   AlertCircle,
   Wifi,
   WifiOff,

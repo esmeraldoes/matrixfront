@@ -118,7 +118,7 @@ export abstract class EnhancedWebSocketService {
     }
     
     // Reject all pending messages
-    this.pendingMessages.forEach((pending, id) => {
+    this.pendingMessages.forEach((pending, _id) => {
       pending.reject(new Error(`Connection closed: ${event.reason || 'Unknown reason'}`));
       clearTimeout(pending.timeout);
     });

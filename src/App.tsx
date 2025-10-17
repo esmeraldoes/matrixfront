@@ -1,5 +1,4 @@
 // src/App.tsx
-import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { Toaster } from 'react-hot-toast';
@@ -38,7 +37,6 @@ import { BacktestResults } from '@/components/portfolio/BacktestResults';
 import { BacktestList } from '@/components/portfolio/BacktestList'; 
 
 // Other Pages
-import Homepage from './pages/HomePage';
 import Home from './pages/Home';
 import Dashboard from '@/pages/Dashboard';
 import { ReferralDashboard } from '@/pages/referral/ReferralDashboard';
@@ -67,7 +65,6 @@ function App() {
             <Route path="/verify-email/:token" element={<EmailVerificationPage />} />
             <Route path="/verify-email" element={<EmailVerificationPage />} />
             <Route path="/oauth-callback" element={<GoogleCallbackPage />} />
-            <Route path="/home" element={<Homepage />} />
             <Route path="/" element={<Home />} />
 
             

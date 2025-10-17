@@ -107,7 +107,7 @@ export const useUpdateBrokerConnection = () => {
       
       return { previousConnection };
     },
-    onError: (err, variables, context) => {
+    onError: (_err, variables, context) => {
       // Rollback on error
       if (context?.previousConnection) {
         queryClient.setQueryData(
@@ -131,7 +131,7 @@ export const useUpdateBrokerConnection = () => {
         type: 'success' 
       }));
     },
-    onSettled: (data, error, variables) => {
+    onSettled: (_data, _error, variables) => {
       // Always refetch after error or success
       queryClient.invalidateQueries({ queryKey: brokerQueryKeys.detail(variables.id) });
       queryClient.invalidateQueries({ queryKey: brokerQueryKeys.lists() });
@@ -168,7 +168,7 @@ export const useDeleteBrokerConnection = () => {
       
       return { previousConnections };
     },
-    onError: (err, variables, context) => {
+    onError: (_err, _variables, context) => {
       // Rollback on error
       if (context?.previousConnections) {
         queryClient.setQueryData(

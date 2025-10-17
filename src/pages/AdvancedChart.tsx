@@ -9,7 +9,7 @@ import {
   type UTCTimestamp,
   type Time,
 } from "lightweight-charts";
-import { useHistoricalBars, useLazyHistoricalBars } from "@/hooks/useTrading";
+import { useHistoricalBars } from "@/hooks/useTrading";
 import useTradingStore from "@/store/tradingStore";
 import { type CandleWithVolume } from "@/utils/normalizerBars";
 import { MarketDataWebSocketService } from "@/services/websocket";
@@ -168,7 +168,7 @@ export const AdvancedTradingChart: React.FC<TradingChartProps> = ({
           rightOffset: 12,
           shiftVisibleRangeOnNewBar: true,
           
-          tickMarkFormatter: (time: Time, tickMarkType: any) => {
+          tickMarkFormatter: (time: Time, _tickMarkType: any) => {
             const date = new Date(Number(time) * 1000);
             if (currentTimeframe === '1D' || currentTimeframe === '1W') {
               return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });

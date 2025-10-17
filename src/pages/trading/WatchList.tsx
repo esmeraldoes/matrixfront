@@ -15,7 +15,7 @@ interface WatchlistPanelProps {
 
 export const WatchlistPanel: React.FC<WatchlistPanelProps> = ({ accountId, onSymbolSelect }) => {
   const [selectedWatchlistId, setSelectedWatchlistId] = useState<number | null>(null);
-  const [newSymbol, setNewSymbol] = useState('');
+  const [_newSymbol, setNewSymbol] = useState('');
   const [newWatchlistName, setNewWatchlistName] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [editName, setEditName] = useState('');

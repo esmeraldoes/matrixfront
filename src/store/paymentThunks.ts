@@ -2,7 +2,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { 
   paymentApi, 
-  type PayoutRequestPayload,
   type SubscriptionPlan,
   type UserSubscription,
   type UserPaymentMethod,

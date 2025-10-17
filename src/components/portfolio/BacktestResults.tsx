@@ -1,9 +1,8 @@
 // components/portfolio/BacktestResults.tsx
 import React, { useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, TrendingUp, TrendingDown, BarChart3, Activity, Download } from 'lucide-react';
+import { ArrowLeft, TrendingUp, TrendingDown, BarChart3, Activity } from 'lucide-react';
 import { usePortfolioBacktest, useBacktestResults, useBacktestChartData } from '@/hooks/usePortfolios';
-import BacktestPerformanceChart from './BacktestPerformanceChart';
 
 // Helper function to safely convert to number
 const safeNumber = (value: any): number => {
@@ -52,8 +51,8 @@ export const BacktestResults: React.FC = () => {
   const id = parseInt(backtestId || '0');
 
   const { data: backtest, isLoading: backtestLoading } = usePortfolioBacktest(id);
-  const { data: results, isLoading: resultsLoading } = useBacktestResults(id);
-  const { data: chartData, isLoading: chartLoading } = useBacktestChartData(id);
+  const { data: results, isLoading: _resultsLoading } = useBacktestResults(id);
+  const { data: chartData, isLoading: _chartLoading } = useBacktestChartData(id);
 
   // Process chart data for visualization
   const processedChartData = useMemo((): ProcessedChartData[] => {

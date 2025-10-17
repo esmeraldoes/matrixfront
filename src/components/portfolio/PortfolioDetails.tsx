@@ -564,7 +564,7 @@ export const PortfolioDetails: React.FC<PortfolioDetailsProps> = ({
     return fallback;
   };
 
-  const safeToFixed = (value: any, decimals: number = 2, fallback: string = '0.00'): string => {
+  const safeToFixed = (value: any, decimals: number = 2, _fallback: string = '0.00'): string => {
     const num = safeNumber(value, 0);
     return num.toFixed(decimals);
   };

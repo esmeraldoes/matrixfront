@@ -173,7 +173,7 @@ export const useLazyHistoricalBars = () => {
         queryFn: () => []
       });
     },
-    onError: (error, variables) => {
+    onError: (error, _variables) => {
       console.error('Lazy loading failed:', error);
     },
   });

@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { generateCodeChallenge, generateCodeVerifier } from '@/utils/pcke';
+import { generateCodeVerifier } from '@/utils/pcke';
 
 const loginSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -73,10 +73,6 @@ export function Login() {
       sessionStorage.setItem('pkce_code_verifier', verifier);
       localStorage.setItem('pkce_code_verifier_backup', verifier);
       
-      const challenge = await generateCodeChallenge(verifier);
-   
-
-
 
       const authUrl = await dispatch(
       initiateGoogleAuth({ referralCode }) 

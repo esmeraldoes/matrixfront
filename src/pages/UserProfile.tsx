@@ -1,6 +1,6 @@
 // src/pages/UserProfile.tsx
 import React, { useState, useEffect } from 'react';
-import { User as UserIcon, Mail, MapPin, Globe, Phone, Camera, Loader2 } from 'lucide-react'; 
+import { Mail, MapPin, Globe, Phone, Camera, Loader2 } from 'lucide-react'; 
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { updateProfile } from '@/store/authThunks';
 import { clearAuthError } from '@/store/authSlice'; 

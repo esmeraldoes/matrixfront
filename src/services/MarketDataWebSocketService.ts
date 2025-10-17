@@ -61,7 +61,7 @@ export class FixedMarketDataWebSocketService {
           }
         };
 
-        this.ws.onclose = (event) => {
+        this.ws.onclose = (_event) => {
           this.isConnected = false;
           this.onStatusChange?.('disconnected');
           

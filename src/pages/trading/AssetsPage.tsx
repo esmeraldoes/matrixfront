@@ -1,5 +1,5 @@
 // src/pages/AssetsPage.tsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useAssets, useAssetSearch } from "@/hooks/useTrading";
 import { useTradingStore } from "@/store/tradingStore";
 import { Input } from "@/components/ui/input";

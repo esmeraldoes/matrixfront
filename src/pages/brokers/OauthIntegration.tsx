@@ -36,7 +36,6 @@ export const OAuthIntegration: React.FC = () => {
     });
   };
 
-  // Use isPending for TanStack Query v5
   const isOAuthCallbackLoading = oauthCallback.isPending;
   const isInitiateOAuthLoading = initiateOAuth.isPending;
 
@@ -113,7 +112,6 @@ export const OAuthIntegration: React.FC = () => {
     );
   }
 
-  // Initial state - show option to start OAuth flow
   return (
     <Box p={3}>
       <Typography variant="h5" gutterBottom>

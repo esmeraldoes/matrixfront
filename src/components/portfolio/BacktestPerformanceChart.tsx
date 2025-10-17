@@ -10,7 +10,6 @@ import {
   LineSeries,
   AreaSeries,
   type UTCTimestamp,
-  type Time,
 } from "lightweight-charts";
 
 interface ChartDataPoint {
@@ -69,7 +68,6 @@ export const BacktestPerformanceChart: React.FC<BacktestPerformanceChartProps> =
     }
 
     try {
-      // Ensure data is properly sorted by timestamp
       const sortedData = [...data].sort((a: ChartDataPoint, b: ChartDataPoint) => 
         a.timestamp.getTime() - b.timestamp.getTime()
       );
@@ -87,7 +85,6 @@ export const BacktestPerformanceChart: React.FC<BacktestPerformanceChartProps> =
     }
   }, [data]);
 
-  // Prepare data for different chart types
   const portfolioData = useMemo((): AreaData[] => {
     console.log("📦 Preparing portfolio data:", processedChartData.length);
     return processedChartData.map((item: ChartDataPoint) => ({
@@ -488,7 +485,6 @@ export const BacktestPerformanceChart: React.FC<BacktestPerformanceChartProps> =
 
     const returns: number[] = processedChartData.map((d: ChartDataPoint) => d.dailyReturn);
     const positiveReturns: number[] = returns.filter((r: number) => r > 0);
-    const negativeReturns: number[] = returns.filter((r: number) => r < 0);
     
     // Calculate average daily return with proper typing
     const totalReturnSum: number = returns.reduce((a: number, b: number) => a + b, 0);

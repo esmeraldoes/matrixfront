@@ -40,7 +40,7 @@ export const BrokerErrorLogs: React.FC<BrokerErrorLogsProps> = ({ connectionId }
   const errorLogs = data?.results || [];
   const totalCount = data?.count || 0;
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchReferralData, requestPayout, approvePayout } from './referralThunks';
-import type { Commission, ReferralInfo, UserStats, CommissionTier } from '@/types/affiliates';
+import type { Commission, ReferralInfo, CommissionTier } from '@/types/affiliates';
 
 interface ReferralState {
   info: ReferralInfo | null;

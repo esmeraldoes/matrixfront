@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { useAuth } from '../contexts/AuthContext';
 
 interface WebhookEndpoint {
   id: string;

@@ -216,14 +216,14 @@ const enhancePortfolio = (portfolio: Portfolio): Portfolio => {
 
 const PortfolioManager: React.FC = () => {
   const [showPortfolioSelection, setShowPortfolioSelection] = useState(false);
-  const [selectedPortfolio, setSelectedPortfolio] = useState<Portfolio | null>(null);
+  const [selectedPortfolio, _setSelectedPortfolio] = useState<Portfolio | null>(null);
   const [showPortfolioDetails, setShowPortfolioDetails] = useState(false);
   const [detailedPortfolio, setDetailedPortfolio] = useState<Portfolio | null>(null);
   
   // Modal states
   const [showAllocationModal, setShowAllocationModal] = useState(false);
   const [portfolioToCopy, setPortfolioToCopy] = useState<Portfolio | null>(null);
-  const [allocationAmount, setAllocationAmount] = useState(0);
+  const [_allocationAmount, setAllocationAmount] = useState(0);
   
   const [showPauseModal, setShowPauseModal] = useState(false);
   const [subscriptionToPause, setSubscriptionToPause] = useState<number | null>(null);
@@ -250,13 +250,10 @@ const PortfolioManager: React.FC = () => {
 
 
    const shouldShowSeeMoreSubscriptions = subscriptionPortfolios.length > 15;
-  const displayedSubscriptionPortfolios = shouldShowSeeMoreSubscriptions 
-    ? subscriptionPortfolios.slice(0, 15) 
-    : subscriptionPortfolios;
 
 
   // Handle portfolio subscription
-  const handleCreatePortfolio = (template: Portfolio, riskPerTrade: number) => {
+  const handleCreatePortfolio = (template: Portfolio, _riskPerTrade: number) => {
     subscribeMutation.mutate({
       portfolio_id: template.id,
       allocation_amount: template.min_investment,
@@ -430,9 +427,7 @@ const PortfolioManager: React.FC = () => {
     });
   };
 
-  const handleSelectPortfolio = (portfolio: Portfolio) => {
-    setSelectedPortfolio(portfolio);
-  };
+
 
   const handleOpenPortfolioDetails = (portfolio: Portfolio) => {
     setDetailedPortfolio(portfolio);

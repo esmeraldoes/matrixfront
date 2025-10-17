@@ -1,7 +1,7 @@
 // components/portfolio/BacktestList.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Clock, TrendingUp, TrendingDown } from 'lucide-react';
+import { Play, Clock} from 'lucide-react';
 import { usePortfolioBacktests } from '@/hooks/usePortfolios';
 
 export const BacktestList: React.FC = () => {

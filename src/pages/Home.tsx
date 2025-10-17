@@ -7,8 +7,6 @@ import {
   Zap,
   CircleDollarSign,
   Activity,
-  Sun,
-  Moon,
   Play,
 } from "lucide-react";
 
@@ -26,23 +24,6 @@ const ThemeContext = React.createContext({
   toggleTheme: () => {},
 });
 
-function ThemeToggle() {
-  const { isDark, toggleTheme } = React.useContext(ThemeContext);
-  
-  return (
-    <button
-      onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 shadow-md hover:shadow-lg transition-all"
-      aria-label="Toggle theme"
-    >
-      {isDark ? (
-        <Sun className="w-5 h-5 text-amber-500" />
-      ) : (
-        <Moon className="w-5 h-5 text-indigo-700" />
-      )}
-    </button>
-  );
-}
 
 // YouTube Video Component with Thumbnail Preview
 function YouTubeVideo({ videoId }: { videoId?: string }) {
@@ -119,7 +100,6 @@ function YouTubeVideo({ videoId }: { videoId?: string }) {
 }
 
 function Hero() {
-  const { isDark } = React.useContext(ThemeContext);
   
   return (
     <section className="relative min-h-[72vh] flex items-center justify-center overflow-hidden px-6">
@@ -487,13 +467,6 @@ function FinalCTA() {
   );
 }
 
-function Footer() {
-  return (
-    <footer className="px-6 py-10 mt-12 text-center text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-900">
-      <div className="max-w-6xl mx-auto">© {new Date().getFullYear()} Matrix Trading. All rights reserved.</div>
-    </footer>
-  );
-}
 
 export default function Home() {
   const [isDark, setIsDark] = useState(false);
@@ -539,18 +512,3 @@ export default function Home() {
     </ThemeContext.Provider>
   );
 }
-
-/* ---------- Helpers ---------- */
-function generateMockSeries2(n: number): PricePoint[] {
-  // small deterministic mock for visuals
-  const pts: PricePoint[] = [];
-  let price = 420000;
-  for (let i = 0; i < n; i++) {
-    const delta = (Math.sin(i / 3) * 800) + (Math.random() * 200 - 100);
-    const c = Math.max(200000, price + delta);
-    pts.push({ t: i, o: price - 10, h: c + 40, l: c - 40, c });
-    price = c;
-  }
-  return pts;
-}
-
